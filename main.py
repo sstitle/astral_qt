@@ -7,7 +7,7 @@
 # ]
 # ///
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QSlider, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QSlider, QLabel, QWidget
 from PyQt6.QtOpenGLWidgets import QOpenGLWidget
 from PyQt6.QtCore import Qt
 from OpenGL.GL import *
@@ -183,11 +183,20 @@ if __name__ == "__main__":
     glWidget = GLWidget()
     layout.addWidget(glWidget)
 
+    # Create a horizontal layout for the label and slider
+    slider_layout = QHBoxLayout()
+    camera_speed_label = QLabel("Camera Speed")
     slider = QSlider(Qt.Orientation.Horizontal)
     slider.setRange(1, 100)
     slider.setValue(int(CAMERA_ANGLE_SPEED * 100))
     slider.valueChanged.connect(glWidget.set_camera_angle_speed)
-    layout.addWidget(slider)
+
+    # Add the label and slider to the horizontal layout
+    slider_layout.addWidget(camera_speed_label)
+    slider_layout.addWidget(slider, stretch=1)  # Make the slider take more space
+
+    # Add the horizontal layout to the main layout
+    layout.addLayout(slider_layout)
 
     window.setCentralWidget(central_widget)
     window.resize(WINDOW_WIDTH, WINDOW_HEIGHT)
