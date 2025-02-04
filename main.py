@@ -7,17 +7,16 @@
 # ]
 # ///
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QSlider, QLabel, QWidget
-from PyQt6.QtOpenGLWidgets import QOpenGLWidget
-from PyQt6.QtCore import Qt
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *  # Import GLU module to use gluPerspective
-import numpy as np
 import signal
-# Fix the AttributeError by using the correct attribute for horizontal orientation
-from PyQt6.QtCore import Qt
 
+import numpy as np
+from OpenGL.GL import *
+from OpenGL.GLU import * 
+from OpenGL.GLUT import *
+from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt
+from PyQt6.QtOpenGLWidgets import QOpenGLWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QSlider, QLabel, QWidget
 
 
 # Constants
@@ -72,7 +71,7 @@ class GLWidget(QOpenGLWidget):
     def initializeGL(self):
         glClearColor(0.0, 0.0, 0.0, 1.0)
         glEnable(GL_DEPTH_TEST)
-        glLineWidth(LINE_WIDTH)  # Set the line width to LINE_WIDTH for a thicker stroke
+        glLineWidth(LINE_WIDTH)
 
     def resizeGL(self, w, h):
         glViewport(0, 0, w, h)
