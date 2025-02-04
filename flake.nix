@@ -29,6 +29,7 @@
           # The Nix packages provided in the environment
           packages = [
             pkgs.uv
+            pkgs.git
           ];
         };
       });
